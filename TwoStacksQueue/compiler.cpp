@@ -1,4 +1,4 @@
-#include "StacksQueue.cpp"
+#include "StacksQueue.h"
 #include <iostream>
 
 int main(){
