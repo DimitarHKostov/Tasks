@@ -118,10 +118,6 @@ LinkedList& LinkedList::operator=(const LinkedList& other){
     return *this;
 }
 
-Iterator::Iterator(Node* start){
-    this->obj=start;
-}
-
 Iterator LinkedList::end(){
     return Iterator(nullptr);
 }
