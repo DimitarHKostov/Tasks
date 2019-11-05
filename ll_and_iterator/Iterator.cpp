@@ -1,6 +1,10 @@
 #pragma once
 #include "Iterator.h"
 
+Iterator::Iterator(Node* start){
+    this->obj=start;
+}
+
 int& Iterator::operator*(){
     return this->obj->data;
 }
