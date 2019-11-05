@@ -39,6 +39,7 @@ void LinkedList::popEnd(){
     }else{
         if(this->head->next==nullptr){
             delete this->head;
+            this->head=nullptr;
         }else{
             Node* crr = this->last->previous;
             delete this->last;
