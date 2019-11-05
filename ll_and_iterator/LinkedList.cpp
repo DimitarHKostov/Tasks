@@ -60,6 +60,7 @@ void LinkedList::popFront(){
     }else{
         if(this->head->next==nullptr){
             delete this->head;
+            this->head=nullptr;
         }else{
             Node* crr = this->head->next;
             delete this->head;
