@@ -10,13 +10,14 @@ LinkedList::LinkedList(){
 }
 
 void LinkedList::pushEnd(int value){
-    if (this->head==nullptr)
+    if (this->last==nullptr)
     {
         this->head=new Node(value);
         this->last=this->head;
     }else{
         this->last->next=new Node(value, this->last);
         this->last=this->last->next;
+        this->last->next=nullptr;
     }
     ++size;
 }
@@ -26,9 +27,9 @@ void LinkedList::pushFront(int value){
         this->head=new Node(value);
         this->last=this->head;
     }else{
-        Node* newNode=new Node(value);
-        newNode->next=this->head;
-        this->head=newNode;
+        this->head->previous=new Node(value,nullptr,this->head);
+        this->head=this->head->previous;
+        this->head->previous=nullptr;
     }
     ++size;
 }
@@ -44,7 +45,7 @@ void LinkedList::popEnd(){
             Node* crr = this->last->previous;
             delete this->last;
             this->last=crr;
-            crr->next=nullptr;
+            this->last->next=nullptr;
         }
         --size;
     }
