@@ -12,7 +12,7 @@ bool* clear(bool* array, int size){
 int goat(std::vector<int>& goats, int goatNumber, int crossingTimes){
 
 	int capacity = goats[goatNumber-1];
-	int currentCourse = 1;
+	int currentCourse = 0;
 	int currentWeight = 0;
 	int index = goatNumber-1;
 	int found = 0;
@@ -39,12 +39,12 @@ int goat(std::vector<int>& goats, int goatNumber, int crossingTimes){
 						}
 					}
 				}
-
 			}
+			currentCourse++;
 		}
 		
 		index--;
-		currentCourse++;
+		
 		currentWeight = 0;
 
 		 if(currentCourse == crossingTimes){
