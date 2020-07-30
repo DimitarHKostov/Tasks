@@ -12,7 +12,7 @@ bool* clear(bool* array, int size){
 int goat(std::vector<int>& goats, int goatNumber, int crossingTimes){
 
 	int capacity = goats[goatNumber-1];
-	int currentCourse = 0;
+	int currentCourse = 1;
 	int currentWeight = 0;
 	int index = goatNumber-1;
 	int found = 0;
@@ -29,55 +29,20 @@ int goat(std::vector<int>& goats, int goatNumber, int crossingTimes){
 			currentWeight+=goats[index];
 
 			if(currentWeight < capacity){
-				int left = currentWeight;
-				int right = currentWeight;
-
-				for(int i = goatNumber-1; i >= 0; i--){
+				for(int i = index-1; i >= 0; i--){
 					if(used[i]==false){
 						int bonus = goats[i];
-						if(right + bonus <= capacity){
-							right+=bonus;
+						if(currentWeight + bonus <= capacity){
+							currentWeight+=bonus;
+							found++;
+							used[i]=true;
 						}
 					}
 				}
 
-				for(int i = 0; i < goatNumber; i++){
-					if(used[i]==false){
-						int bonus = goats[i];
-						if(left + bonus <= capacity){
-							left+=bonus;
-						}
-					}
-				}	
-
-				if(left > right){
-					for(int i = 0; i < goatNumber; i++){
-						if(used[i]==false){
-							int bonus = goats[i];
-							if(currentWeight + bonus <= capacity){
-								currentWeight+=bonus;
-								found++;
-								used[i]=true;
-							}
-						}
-					}	
-				}else{
-					for(int i = goatNumber-1; i >= 0; i--){
-						if(used[i]==false){
-							int bonus = goats[i];
-							if(currentWeight + bonus <= capacity){
-								currentWeight+=bonus;
-								found++;
-								used[i]=true;
-							}
-						}
-					}
-				}
-				left=0;
-				right=0;
 			}
 		}
-
+		
 		index--;
 		currentCourse++;
 		currentWeight = 0;
@@ -94,6 +59,7 @@ int goat(std::vector<int>& goats, int goatNumber, int crossingTimes){
 		 	}
 		 }
 	}
+
 	delete[] used;
 	return capacity;
 }
