@@ -3,13 +3,13 @@
 const int labSize=8;
 const int dummyValue=101;
 
+#define Const const int&
 
-
-bool valid(const int& value){
+bool valid(Const value){
 	return value>=0 && value < labSize;
 }
 
-bool isPossible(const int matrix[labSize][labSize], const int& y, const int& x){
+bool isPossible(const int matrix[labSize][labSize], Const y, Const x){
 	if(valid(y) && valid(x)){
 		if(matrix[y][x]==0){
 			return true;
@@ -18,7 +18,7 @@ bool isPossible(const int matrix[labSize][labSize], const int& y, const int& x){
 	return false;
 }
 
-bool hasWay(int matrix[labSize][labSize], int startY, int startX, int endY, int endX){
+bool hasWay(int matrix[labSize][labSize], Const startY, Const startX, Const endY, Const endX){
 	if(!valid(startY) || !valid(startX) || !valid(endY) || !valid(endX) || matrix[startY][startX]!=0){
 		return false;
 	}
