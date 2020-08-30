@@ -17,7 +17,7 @@ bool validStep(int y, int x){
 	return y>=0 && y<labSize && x>=0 && x<labSize && lab[y][x]==0;
 }
 
-bool knightMovementRecursive(int lab[labSize][labSize], int sy, int sx, int ex, int ey){
+bool knightMovementRecursive(int lab[labSize][labSize], int sy, int sx, int ey, int ex){
 	if(!validStep(sy, sx)){
 		return false;
 	}
@@ -76,7 +76,7 @@ struct Position{
 	int y;
 };
 
-bool knightMovementIterative(int lab[labSize][labSize], int sy, int sx, int ex, int ey){
+bool knightMovementIterative(int lab[labSize][labSize], int sy, int sx, int ey, int ex){
 	std::stack<Position> s;
 	s.push({sy, sx});
 	while(!s.empty()){
