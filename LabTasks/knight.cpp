@@ -72,8 +72,8 @@ bool knightMovementRecursive(int lab[labSize][labSize], int sy, int sx, int ey, 
 //------------------------------------------
 
 struct Position{
-	int x;
 	int y;
+	int x;
 };
 
 bool knightMovementIterative(int lab[labSize][labSize], int sy, int sx, int ey, int ex){
